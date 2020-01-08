@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,20 +40,37 @@ public class AccountFragment extends Fragment {
     TextView nameTv, emailTv;
 
 
+    private RecyclerView mRecyclerView;
+    //adapter provides as many items as we need currently
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
     public AccountFragment() {
         // Required empty public constructor
     }
 
+    //public void onCreate(Bundle savedInstanceState) {
 
+
+    //}
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
 
         //Array of settings items
         ArrayList<SettingsItem> settingsItems = new ArrayList<>();
         settingsItems.add(new SettingsItem(R.drawable.ic_add_image, "Line1a", "Line 2d"));
         settingsItems.add(new SettingsItem(R.drawable.ic_add_image, "Line2b", "Line 2e"));
         settingsItems.add(new SettingsItem(R.drawable.ic_add_image, "Line3c", "Line 2f"));
+
+        mRecyclerView.findViewById(R.id.SettingsList); //?? Ahmad
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this.getActivity());
+        mAdapter = new SettingsAdapter(settingsItems);
+
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
 
 
         View view = inflater.inflate(R.layout.fragment_account, container, false);
