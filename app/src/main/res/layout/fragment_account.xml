@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
 <ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -8,78 +7,84 @@
     android:background="#F1EDED"
     tools:context=".AccountFragment">
 
-    <RelativeLayout
+    <!--
+    aded the linerlayout-->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:background="@color/colorPrimaryDark"
-            >
+            android:layout_height="wrap_content">
 
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@color/colorPrimaryDark"
+                >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:orientation="vertical"
-            android:layout_marginTop="100dp"
-            >
-
-            <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginLeft="20dp"
-                android:padding="5dp"
-                android:background="@color/colorPrimary"
-                android:layout_marginStart="20dp"
-                android:id="@+id/avatarIv"
-                android:src="@drawable/ic_add_image"
-                />
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="120dp"
+                android:orientation="vertical"
+                android:layout_marginTop="100dp"
+                >
 
-                <TextView
-                    android:id="@+id/nameTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:textSize="25sp"
-                    android:textColor="@color/whiteTransparentHalf"
-                    android:text="Name"
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="20dp"
+                    android:padding="5dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_marginStart="20dp"
+                    android:id="@+id/avatarIv"
+                    android:src="@drawable/ic_add_image"
                     />
 
-
-                <TextView
-                    android:id="@+id/emailTv"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:textColor="@color/whiteTransparentHalf"
-                    android:text="Email"
-                    />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nameTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Name"
+                        android:textColor="@color/whiteTransparentHalf"
+                        android:textSize="25sp" />
 
 
-        </LinearLayout>
-
-        </LinearLayout>
-
-
-    </RelativeLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/SettingsList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="4dp"
-        android:scrollbars="vertical"
-        android:background="@color/design_default_color_primary_dark">
-
-    </androidx.recyclerview.widget.RecyclerView>
+                    <TextView
+                        android:id="@+id/emailTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Email"
+                        android:textColor="@color/whiteTransparentHalf" />
 
 
-    </ScrollView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/SettingsList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:background="#FFFFFF"
+            android:padding="4dp"
+            android:scrollbars="vertical">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+</ScrollView>

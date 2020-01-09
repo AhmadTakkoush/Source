@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,55 +26,38 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class AccountFragment extends Fragment {
 
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-
     ImageView avatarIv;
     TextView nameTv, emailTv;
-
-
-    private RecyclerView mRecyclerView;
-    //adapter provides as many items as we need currently
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-
-    public AccountFragment() {
-        // Required empty public constructor
-    }
-
-    //public void onCreate(Bundle savedInstanceState) {
-
-
-    //}
+    RecyclerView mRecyclerView;
+    RecyclerView.Adapter mAdapter;
+    RecyclerView.LayoutManager mLayoutManager;
+    //////added the @Nullable
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+        View view = inflater.inflate(R.layout.fragment_account, container, false);
 
         //Array of settings items
         ArrayList<SettingsItem> settingsItems = new ArrayList<>();
-        settingsItems.add(new SettingsItem(R.drawable.ic_add_image, "Line1a", "Line 2d"));
-        settingsItems.add(new SettingsItem(R.drawable.ic_add_image, "Line2b", "Line 2e"));
-        settingsItems.add(new SettingsItem(R.drawable.ic_add_image, "Line3c", "Line 2f"));
-
-        mRecyclerView.findViewById(R.id.SettingsList); //?? Ahmad
+        settingsItems.add(new SettingsItem(R.drawable.profile, "Profile", "Edit Profile Settings"));
+        settingsItems.add(new SettingsItem(R.drawable.about, "About", "About this app"));
+        settingsItems.add(new SettingsItem(R.drawable.help, "Help", "Know more about Source"));
+////////////////////
+    //    added the view object
+        mRecyclerView = view.findViewById(R.id.SettingsList);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         mAdapter = new SettingsAdapter(settingsItems);
-
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
-
-        View view = inflater.inflate(R.layout.fragment_account, container, false);
 
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
@@ -99,7 +83,7 @@ public class AccountFragment extends Fragment {
                     emailTv.setText(email);
                     try{
                         Picasso.get().load(image).into(avatarIv);
-                        }
+                    }
                     catch (Exception e)
                     {
                         Picasso.get().load(R.drawable.ic_add_image).into(avatarIv);

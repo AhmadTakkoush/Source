@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         mainToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);
-        getSupportActionBar().setTitle("Photo Blog");
+        getSupportActionBar().setTitle("Source");
 
         if(mAuth.getCurrentUser() != null) {
             mainBottomNav = findViewById(R.id.mainbottomNav);
